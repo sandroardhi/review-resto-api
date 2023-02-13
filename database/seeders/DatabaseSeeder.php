@@ -21,9 +21,11 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        $this->call([
-            UserSeeder::class,
-            RestoSeeder::class,
-        ]);
+        if(config('app.debug', false)) {
+            $this->call([
+                UserSeeder::class,
+                RestoSeeder::class,
+            ]);
+        }
     }
 }

@@ -15,12 +15,10 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        if(config('app.debug', false)) {
             User::create([
                 'name' => 'tester',
                 'email' => 'someone@gmail.com',
                 'password' => bcrypt('password') 
             ]);
-        }
     }
 }
