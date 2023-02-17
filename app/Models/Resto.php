@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-   
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 class Resto extends Model
 {
     use HasFactory;
@@ -14,4 +15,9 @@ class Resto extends Model
         'description',
         'address',
     ];
+
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class);
+    }
 }
