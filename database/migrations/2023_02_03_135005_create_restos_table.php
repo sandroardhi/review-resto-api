@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\User;
 
 return new class extends Migration
 {
@@ -18,6 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('description')->nullable();
             $table->text('address');
+            $table->foreignIdFor(User::class, 'user_id')->cascadeOnDelete();
             $table->timestamps();
         });
     }
