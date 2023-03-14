@@ -16,6 +16,7 @@ class Resto extends Model
         'description',
         'user_id',
         'address',
+        'image',
     ];
 
     public function user(): BelongsTo
