@@ -17,8 +17,8 @@ use App\Http\Controllers\AuthenticationController;
 |
 */
 
-Route::post('/auth/login', [AuthenticationController::class, 'login'])->name('auth.login');
-Route::post('/auth/register', [AuthenticationController::class, 'register'])->name('auth.register');
+Route::post('/auth/login', [AuthenticationController::class, 'login'])->name('auth.login')->middleware('unauthorized');
+Route::post('/auth/register', [AuthenticationController::class, 'register'])->name('auth.register')->middleware('unauthorized');
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/auth/profile', [AuthenticationController::class, 'profile'])->name('auth.profile');

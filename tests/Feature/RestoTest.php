@@ -28,6 +28,9 @@ class RestoTest extends TestCase
     {
         // make one ini nanti ga masuk database datanya
         $data = Resto::factory()->makeOne()->toArray();
+        $user = User::factory()->createOne();
+
+        Sanctum::actingAs($user);
 
         $this->postJson(route('restos.store'), $data)
             ->assertCreated();
@@ -45,6 +48,9 @@ class RestoTest extends TestCase
           // makeOne() kan ga masuk database ya, tapi data nya ada, lek createOne() kan masuk database, jadi nanti data yang di database itu di edit pake data yang di makeOne()
         $updatedData = Resto::factory()->makeOne()->toArray();
         $data = Resto::factory()->createOne();
+        $user = User::factory()->createOne();
+
+        Sanctum::actingAs($user);
 
         $this->patchJson(route('restos.update', $data), $updatedData)
             ->assertOk()
