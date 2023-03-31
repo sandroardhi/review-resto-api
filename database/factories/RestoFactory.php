@@ -20,7 +20,7 @@ class RestoFactory extends Factory
     {
         return [
             'name' =>  $this->faker->word(),
-            'description' =>  $this->faker->sentence(200),
+            'description' =>  $this->faker->sentence(),
             'address' =>  $this->faker->sentence(),
             'user_id' => User::factory(),
         ];

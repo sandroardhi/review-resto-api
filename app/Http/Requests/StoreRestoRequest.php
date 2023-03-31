@@ -40,7 +40,7 @@ class StoreRestoRequest extends FormRequest
                 'required',
                 'string',
                 'max:750',
-            ],
+            ]
         ];
     }
 }

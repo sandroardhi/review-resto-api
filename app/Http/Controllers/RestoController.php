@@ -17,10 +17,6 @@ class RestoController extends Controller
     {
         return Resto::all();
     }
-    public function show_resto_profile($id)
-    {
-        return Resto::where('user_id', $id)->get();
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -30,27 +26,11 @@ class RestoController extends Controller
      */
     public function store(StoreRestoRequest $request)
     {
-        $this->validate($request, [
-            'image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
+        return Resto::create([
+            // ini kita langsung create data yang udah divalidate, divalidatenya itu ndek StoreRestoRequest (seng ndek parameter e ikulo, iku isuk di ctrl click terus nak njeroe isok di setting)
+            ...$request->validated(),
+            'user_id' => $request->user()->id
         ]);
-        if($request->image){
-            $image_path = $request->file('image')->store('image', 'public');
-        }
-        if($request->image){
-            return Resto::create([
-                // ini kita langsung create data yang udah divalidate, divalidatenya itu ndek StoreRestoRequest (seng ndek parameter e ikulo, iku isuk di ctrl click terus nak njeroe isok di setting)
-                ...$request->validated(),
-                'image' => $image_path,
-                'user_id' => $request->user()->id,
-            ]);
-        }
-        else{
-            return Resto::create([
-                // ini kita langsung create data yang udah divalidate, divalidatenya itu ndek StoreRestoRequest (seng ndek parameter e ikulo, iku isuk di ctrl click terus nak njeroe isok di setting)
-                ...$request->validated(),
-                'user_id' => $request->user()->id,
-            ]);
-        }
     }
 
     /**
