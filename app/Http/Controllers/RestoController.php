@@ -21,6 +21,7 @@ class RestoController extends Controller
     public function show_resto_profile($id)
     {
         return Resto::where('user_id', $id)->get();
+        
     }
 
     /**
