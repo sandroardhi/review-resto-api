@@ -18,6 +18,7 @@ return new class extends Migration
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
             $table->text('text', 750);
+            $table->string('image')->nullable();
             $table->unsignedInteger('rating')->default(0);
             $table->foreignIdFor(User::class, 'user_id')->cascadeOnDelete();
             $table->foreignIdFor(Resto::class, 'resto_id')->cascadeOnDelete();

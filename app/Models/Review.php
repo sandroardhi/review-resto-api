@@ -14,6 +14,7 @@ class Review extends Model
         'text',
         'rating',
         'user_id',
+        'image',
         'resto_id',
     ];
 
