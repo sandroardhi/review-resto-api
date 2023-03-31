@@ -17,7 +17,7 @@ return new class extends Migration
         Schema::create('restos', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->string('image')->nullable();
             $table->text('address');
             $table->foreignIdFor(User::class, 'user_id')->cascadeOnDelete();

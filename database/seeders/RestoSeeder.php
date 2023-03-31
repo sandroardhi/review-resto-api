@@ -16,6 +16,6 @@ class RestoSeeder extends Seeder
      */
     public function run()
     {
-            Resto::factory()->has(Review::factory()->count(5))->count(100)->create();
+            Resto::factory()->has(Review::factory()->count(5))->count(30)->create();
     }
 }
