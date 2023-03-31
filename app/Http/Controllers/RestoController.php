@@ -67,7 +67,6 @@ class RestoController extends Controller
         $resto->update($request->validated());
 
         return $resto->refresh();
-        
     }
 
     /**
